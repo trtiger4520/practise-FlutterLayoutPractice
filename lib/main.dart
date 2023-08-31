@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'components/main_app_bar.dart';
 import 'components/main_bottom_nav_bar.dart';
+import 'components/main_floating_actions.dart';
 import 'components/main_tab_view.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: _getTheme(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 
@@ -30,9 +31,11 @@ class MyApp extends StatelessWidget {
         primary: const Color.fromRGBO(146, 103, 249, 1),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          foregroundColor: Colors.white,
-          backgroundColor: Color.fromRGBO(146, 103, 249, 1),
-          iconSize: 40),
+        foregroundColor: Colors.white,
+        backgroundColor: Color.fromRGBO(146, 103, 249, 1),
+        iconSize: 40,
+        shape: CircleBorder(),
+      ),
       useMaterial3: true,
     );
 
@@ -45,15 +48,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const MainAppBar(),
-      body: const MainTabView(),
-      bottomNavigationBar: const MainBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        onPressed: () => {},
-        child: const Icon(Icons.add_rounded),
-      ),
+    return const Scaffold(
+      appBar: MainAppBar(),
+      body: MainTabView(),
+      bottomNavigationBar: MainBottomNavBar(),
+      floatingActionButton: MainFloatingActions(),
     );
   }
 }
